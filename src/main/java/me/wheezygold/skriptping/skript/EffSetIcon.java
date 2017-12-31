@@ -1,6 +1,10 @@
 package me.wheezygold.skriptping.skript;
 
 import ch.njol.skript.Skript;
+import ch.njol.skript.doc.Description;
+import ch.njol.skript.doc.Examples;
+import ch.njol.skript.doc.Name;
+import ch.njol.skript.doc.Since;
 import ch.njol.skript.lang.Effect;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser;
@@ -16,6 +20,10 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
+@Name("Set Server Icon (Image File)")
+@Description("Set's the server's icon")
+@Examples({"set the server-icon to image at file \"test.png\""})
+@Since("0.1")
 @SKU.data(
         name = "Set Server Icon (Image File)",
         desc = "Set's the server's icon",

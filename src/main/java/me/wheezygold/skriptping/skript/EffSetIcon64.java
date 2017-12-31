@@ -1,6 +1,10 @@
 package me.wheezygold.skriptping.skript;
 
 import ch.njol.skript.Skript;
+import ch.njol.skript.doc.Description;
+import ch.njol.skript.doc.Examples;
+import ch.njol.skript.doc.Name;
+import ch.njol.skript.doc.Since;
 import ch.njol.skript.lang.Effect;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser;
@@ -17,6 +21,10 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.Base64;
 
+@Name("Set Server Icon (Base64)")
+@Description("Set's the server's icon from base 64 code.")
+@Examples({"set the server-icon to base64 \"*base 64 code*\""})
+@Since("0.1")
 @SKU.data(
         name = "Set Server Icon (Base64)",
         desc = "Set's the server's icon from base 64 code.",

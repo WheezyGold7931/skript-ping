@@ -1,6 +1,10 @@
 package me.wheezygold.skriptping.skript;
 
 import ch.njol.skript.Skript;
+import ch.njol.skript.doc.Description;
+import ch.njol.skript.doc.Examples;
+import ch.njol.skript.doc.Name;
+import ch.njol.skript.doc.Since;
 import ch.njol.skript.lang.Effect;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser;
@@ -9,6 +13,10 @@ import me.wheezygold.skriptping.SKU;
 import me.wheezygold.skriptping.SkriptPing;
 import org.bukkit.event.Event;
 
+@Name("Set Server Version String")
+@Description("Set's the version string. While not shown by default to the user; server lists, hacked clients, and server ping sites will see this.")
+@Examples({"set the version string to \"SkriptCord\""})
+@Since("0.1")
 @SKU.data(
         name = "Set Server Version String",
         desc = "Set's the version string. While not shown by default to the user; server lists, hacked clients, and server ping sites will see this.",
