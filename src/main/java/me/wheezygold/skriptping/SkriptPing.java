@@ -101,7 +101,8 @@ public class SkriptPing extends JavaPlugin {
                     ping.setPlayers(hoverList);
                 }
                 if (!customVersionName.isEmpty()) {
-                    ping.setVersionName(customVersionName);
+                    ping.setVersionProtocol(999);
+                    ping.setVersionName(ChatColor.translateAlternateColorCodes('&', customVersionName));
                 }
                 if (!customMotd.isEmpty()) {
                     ping.setMotD(ChatColor.translateAlternateColorCodes('&', customMotd));

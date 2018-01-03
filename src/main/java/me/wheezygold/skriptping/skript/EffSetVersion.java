@@ -14,12 +14,12 @@ import me.wheezygold.skriptping.SkriptPing;
 import org.bukkit.event.Event;
 
 @Name("Set Server Version String")
-@Description("Set's the version string. While not shown by default to the user; server lists, hacked clients, and server ping sites will see this.")
+@Description("Set's the version string. This displays on the ping bar of the user.")
 @Examples({"set the version string to \"SkriptCord\""})
 @Since("0.1")
 @SKU.data(
         name = "Set Server Version String",
-        desc = "Set's the version string. While not shown by default to the user; server lists, hacked clients, and server ping sites will see this.",
+        desc = "Set's the version string. This displays on the ping bar of the user.",
         example = "set the version string to \"SkriptCord\""
 )
 public class EffSetVersion extends Effect {
