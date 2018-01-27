@@ -30,15 +30,8 @@ public class ExprMOTD extends SimpleExpression<String> {
 
     @Override
     public void change(Event e, Object[] delta, Changer.ChangeMode mode) {
-        if (mode == Changer.ChangeMode.SET) {
-            if (delta[0] == null) {
-                Skript.error("MOTD string must be a valid string!");
-                return;
-            }
-            SkriptPing.getInstance().setCustomMotd((String) delta[0]);
-        } else {
-            SkriptPing.getInstance().setCustomMotd(null);
-        }
+        String motd = mode == Changer.ChangeMode.SET ? (String) delta[0] : null;
+        SkriptPing.getInstance().setCustomMotd(motd);
     }
 
     @Override

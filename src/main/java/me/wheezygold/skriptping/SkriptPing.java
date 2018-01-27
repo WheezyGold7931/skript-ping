@@ -63,6 +63,7 @@ public class SkriptPing extends JavaPlugin {
                 log(C.cPurple + "Skript is not accepting registrations currently! To load syntax without restarting your server get skript-hack at: https://tinyurl.com/skript-hack");
                 return false;
             }
+
             try {
                 SkriptHack.enableRegistrations();
             } catch (NoSuchFieldException | IllegalAccessException e) {

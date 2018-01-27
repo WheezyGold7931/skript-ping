@@ -37,13 +37,9 @@ public class ExprOnlinePlayers extends SimpleExpression<Number> {
     @Override
     public void change(Event e, Object[] delta, Changer.ChangeMode mode) {
         if (mode == Changer.ChangeMode.SET) {
-            if (delta[0] == null) {
-                Skript.error("NULL KYS");
-                return;
-            }
             SkriptPing.getInstance().log(String.valueOf(((Number) delta[0]).intValue()));
         } else {
-            SkriptPing.getInstance().log("Reset now");
+            //TODO Add RESET changer
         }
     }
 
