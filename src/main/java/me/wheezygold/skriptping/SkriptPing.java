@@ -34,22 +34,25 @@ public class SkriptPing extends JavaPlugin {
     public void onEnable() {
         log(C.cDAqua + "Loading skript-ping v" + getDescription().getVersion() + "!");
         instance = this;
-        if (pluginManager.getPlugin("Skript") != null) {
-            if (pluginManager.getPlugin("ProtocolLib") != null) {
-                log(C.cDAqua + "Loading Metrics...");
-                Metrics metrics = new Metrics(this);
-                metrics.addCustomChart(new Metrics.SimplePie("skript_version", () -> Bukkit.getServer().getPluginManager().getPlugin("Skript").getDescription().getVersion()));
-                log(C.cDAqua + "Loading Syntax...");
-                if (loadSkript()) {
-                    log(C.cDAqua + "Loading Ping Listener!");
-                    initListener();
-                }
-            } else {
-                log(C.cDRed + "This plugin also requires ProtocolLib to work, please download it and restart your server!");
-            }
-        } else {
+        if (pluginManager.getPlugin("Skript") == null) {
             log(C.cDRed + "This plugin is a Skript Addon so therefore it requires Skript to be enabled!");
+            return;
         }
+        
+        if (pluginManager.getPlugin("ProtocolLib") == null) {
+            log(C.cDRed + "This plugin also requires ProtocolLib to work, please download it and restart your server!");
+            return;
+        }
+        
+        log(C.cDAqua + "Loading Metrics...");
+        Metrics metrics = new Metrics(this);
+        metrics.addCustomChart(new Metrics.SimplePie("skript_version", () -> Bukkit.getServer().getPluginManager().getPlugin("Skript").getDescription().getVersion()));
+        log(C.cDAqua + "Loading Syntax...");
+        if (loadSkript()) {
+            log(C.cDAqua + "Loading Ping Listener!");
+            initListener();
+        }
+        
     }
 
     private boolean loadSkript() {
