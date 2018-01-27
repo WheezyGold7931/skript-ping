@@ -15,6 +15,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import javax.annotation.Nullable;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -24,14 +25,14 @@ public class SkriptPing extends JavaPlugin {
 
     private static SkriptPing instance;
     private List<String> hoverListStrings = new ArrayList<>();
-    private String customVersionName = "";
-    private String customMotd = "";
+    private String customVersionName = null;
+    private String customMotd = null;
     private WrappedServerPing.CompressedImage serverIcon = null;
     private PluginManager pluginManager = getServer().getPluginManager();
 
     @Override
     public void onEnable() {
-        log(C.cDAqua + "Loading skript-ping!");
+        log(C.cDAqua + "Loading skript-ping v" + getDescription().getVersion() + "!");
         instance = this;
         if (pluginManager.getPlugin("Skript") != null) {
             if (pluginManager.getPlugin("ProtocolLib") != null) {
@@ -100,11 +101,11 @@ public class SkriptPing extends JavaPlugin {
                     }
                     ping.setPlayers(hoverList);
                 }
-                if (!customVersionName.isEmpty()) {
+                if (customVersionName != null) {
                     ping.setVersionProtocol(999);
                     ping.setVersionName(ChatColor.translateAlternateColorCodes('&', customVersionName));
                 }
-                if (!customMotd.isEmpty()) {
+                if (customMotd != null) {
                     ping.setMotD(ChatColor.translateAlternateColorCodes('&', customMotd));
                 }
                 if (serverIcon != null) {
@@ -130,6 +131,15 @@ public class SkriptPing extends JavaPlugin {
         this.customMotd = customMotd;
     }
 
+    @Nullable
+    public String getCustomVersionName() {
+        return customVersionName;
+    }
+
+    public String getCustomMotd() {
+        return customMotd;
+    }
+
     public void setServerIcon(WrappedServerPing.CompressedImage icon) {
         serverIcon = icon;
     }
@@ -138,12 +148,12 @@ public class SkriptPing extends JavaPlugin {
         serverIcon = null;
     }
 
-    private void log(String message) {
+    public void log(String message) {
         getServer().getConsoleSender().sendMessage("[skript-ping] " + message);
     }
 
     @SuppressWarnings("unused")
-    public static class C {
+    static class C {
 
         static String Error = "§k";
         static String Bold = "§l";
