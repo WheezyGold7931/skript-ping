@@ -30,24 +30,18 @@ public class ExprHoverList extends SimpleExpression<String> {
 
     @Override
     public void change(Event e, Object[] delta, Changer.ChangeMode mode) {
-        String targetDelta = null;
-        if (mode == Changer.ChangeMode.ADD || mode == Changer.ChangeMode.REMOVE) {
-            targetDelta = (String) delta[0];
-        }
-        if (mode == Changer.ChangeMode.ADD) {
-            if (targetDelta == null) {
-                Skript.error("Hover value must be a valid string!");
-                return;
-            }
-            SkriptPing.getInstance().getHoverListStrings().add(targetDelta);
-        } else if (mode == Changer.ChangeMode.REMOVE) {
-            if (targetDelta == null) {
-                Skript.error("Hover value must be a valid string!");
-                return;
-            }
-            SkriptPing.getInstance().getHoverListStrings().remove(targetDelta);
-        } else {
-            SkriptPing.getInstance().getHoverListStrings().clear();
+        switch (mode) {
+            case ADD:
+                SkriptPing.getInstance().getHoverListStrings().add((String) delta[0]);
+                break;
+
+            case REMOVE:
+                SkriptPing.getInstance().getHoverListStrings().add((String) delta[0]);
+                break;
+
+            case RESET:
+                SkriptPing.getInstance().getHoverListStrings().clear();
+
         }
     }
 

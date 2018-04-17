@@ -44,15 +44,8 @@ public class ExprVersionString extends SimpleExpression<String> {
 
     @Override
     public void change(Event e, Object[] delta, Changer.ChangeMode mode) {
-        if (mode == Changer.ChangeMode.SET) {
-            if (delta[0] == null) {
-                Skript.error("Version string must be a valid string!");
-                return;
-            }
-            SkriptPing.getInstance().setCustomVersionName((String) delta[0]);
-        } else {
-            SkriptPing.getInstance().setCustomVersionName(null);
-        }
+        String versionName = mode == Changer.ChangeMode.SET ? (String) delta[0] : null;
+        SkriptPing.getInstance().setCustomVersionName(versionName);
     }
 
     @Override
